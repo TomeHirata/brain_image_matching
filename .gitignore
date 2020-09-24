@@ -1,0 +1,4 @@
+*.avi
+*.dcm
+*.tif
+__pycache__
