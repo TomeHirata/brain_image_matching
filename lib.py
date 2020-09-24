@@ -79,7 +79,8 @@ def onMouse(event, x, y, flag, params):
             y1, y2 = min(points[0][1], points[1][1]), max(points[0][1], points[1][1])
             template = pointout_to_template(params['idx'], x, y, x1, x2, y1, y2, image_start, image_start+image_length, dicom_file_path, template_file_path)
             new_wname = f"{params['idx']}_{x}_{y}"
-            cv2.namedWindow(wname)
+            template = cv2.resize(template, (template.shape[1] // 2, template.shape[0] // 2))
+            cv2.namedWindow(wname, cv2.WINDOW_NORMAL)
             cv2.imshow(new_wname,template)
     elif event == cv2.EVENT_LBUTTONDOWN:
         max_x, max_y = img.shape[1], img.shape[0]
@@ -92,7 +93,7 @@ def onMouse(event, x, y, flag, params):
         img = read_image(params['idx'])
         params['img'] = img
         params['points'] = []
-        cv2.imshow(wname,img)
+        cv2.imshow(wname, img)
 
 def pointout_to_template(index, x, y, x1, x2, y1, y2, first=0, last=100, dicom_file_path='', template_file_path=''):
     point_width = 30
