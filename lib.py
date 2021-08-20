@@ -1,4 +1,4 @@
-import dicom
+import pydicom as dicom
 import cv2
 import os
 import tifffile
@@ -110,6 +110,7 @@ def pointout_to_template(index, x, y, x1, x2, y1, y2, first=0, last=100, dicom_f
     return template
 
 def read_image(idx):
+    print(f'{dicom_file_path}/{dicom_files[idx]}')
     d = dicom.read_file(f'{dicom_file_path}/{dicom_files[idx]}')
     img = d.pixel_array
     return shape_image(img)
