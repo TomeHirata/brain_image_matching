@@ -1,4 +1,6 @@
 *.avi
 *.dcm
 *.tif
+*.ipynb_checkpoints
+.python-version
 __pycache__

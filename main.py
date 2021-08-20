@@ -1,4 +1,4 @@
-import dicom
+import pydicom as dicom
 import cv2
 import os
 import tifffile
